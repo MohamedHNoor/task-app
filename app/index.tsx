@@ -1,5 +1,5 @@
-import { ShoppingListItem } from "@/components/ShoppingListItem";
-import { View } from "react-native";
+import { ShoppingListItem } from '@/components/ShoppingListItem';
+import { View } from 'react-native';
 
 export default function Index() {
   return (
