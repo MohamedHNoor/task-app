@@ -1,12 +1,19 @@
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, Pressable } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
 
 type Props = {
   name: string;
   isCompleted?: boolean;
+  onDelete: () => void;
+  onToggleComplete?: () => void;
 };
-export function ShoppingListItem({ name, isCompleted }: Props) {
+export function ShoppingListItem({
+  name,
+  isCompleted,
+  onDelete,
+  onToggleComplete,
+}: Props) {
   const handleDelete = () => {
     Alert.alert(
       `Are you sure you want to delete ${name} ?`,
@@ -14,7 +21,7 @@ export function ShoppingListItem({ name, isCompleted }: Props) {
       [
         {
           text: 'Yes',
-          onPress: () => console.log('Yes Pressed, Delete the item'),
+          onPress: () => onDelete(),
           style: 'destructive',
         },
         {
@@ -26,19 +33,21 @@ export function ShoppingListItem({ name, isCompleted }: Props) {
     );
   };
   return (
-    <View
+    <Pressable
       className={
         'flex-row items-center justify-between border-b-2 border-gray-200 border-b-black/10 px-4 py-2 '
       }
+      onPress={onToggleComplete}
     >
-      <View className='flex-row items-center gap-4'>
+      <View className='flex-row flex-1 items-center gap-4'>
         <Entypo
           name={isCompleted ? 'check' : 'circle'}
           size={24}
           color={isCompleted ? '#94a3b8' : '#06b6d4'}
         />
         <Text
-          className={`text-3xl font-light  ${isCompleted ? 'line-through text-slate-400' : 'text-slate-700'}`}
+          className={`text-3xl font-light flex-1  ${isCompleted ? 'line-through text-slate-400' : 'text-slate-700'}`}
+          numberOfLines={2}
         >
           {name}
         </Text>
@@ -53,6 +62,6 @@ export function ShoppingListItem({ name, isCompleted }: Props) {
           color={isCompleted ? '#94a3b8' : '#ef4444'}
         />
       </TouchableOpacity>
-    </View>
+    </Pressable>
   );
 }
