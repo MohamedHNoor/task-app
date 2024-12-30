@@ -41,7 +41,7 @@ export default function Count() {
     if (result === 'granted') {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: "I'm a notification from your app! 📨",
+          title: 'I am a notification from your app! 📨',
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
