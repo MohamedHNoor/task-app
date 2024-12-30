@@ -1,7 +1,8 @@
 import { ShoppingListItem } from '@/components/ShoppingListItem';
 import { getFromStorage, saveToStorage } from '@/utils/storage';
 import { useEffect, useState } from 'react';
-import { TextInput, View, FlatList, Text } from 'react-native';
+import { TextInput, View, FlatList, Text, LayoutAnimation } from 'react-native';
+import * as Haptics from 'expo-haptics';
 
 type ShoppingListItemType = {
   id: string;
@@ -42,6 +43,7 @@ export default function Index() {
     const fetchData = async () => {
       const data = await getFromStorage(storageKey);
       if (data) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setShoppingList(data);
       }
     };
@@ -59,6 +61,7 @@ export default function Index() {
         ...shoppingList,
       ];
       saveToStorage(storageKey, newShoppingList);
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setShoppingList(newShoppingList);
       setValue('');
     }
@@ -67,12 +70,19 @@ export default function Index() {
   const handleDelete = (id: string) => {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
     saveToStorage(storageKey, newShoppingList);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setShoppingList(newShoppingList);
   };
 
   const handleToggleComplete = (id: string) => {
     const newShoppingList = shoppingList.map((item) => {
       if (item.id === id) {
+        if (item.completedTimeStamps) {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        } else {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        }
         return {
           ...item,
 
@@ -85,6 +95,7 @@ export default function Index() {
       return item;
     });
     saveToStorage(storageKey, newShoppingList);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setShoppingList(newShoppingList);
   };
 
