@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# Task App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Task App is a mobile application built with Expo, React Native, and NativeWind, designed to help users manage their tasks efficiently.
 
-## Get started
+## Built With
 
-1. Install dependencies
+- Expo
+- React Native
+- NativeWind
+- TypeScript
 
-   ```bash
-   npm install
-   ```
+## Getting Started
 
-2. Start the app
+To get a local copy up and running follow these simple example steps.
 
-   ```bash
-    npx expo start
-   ```
+### Prerequisites
 
-In the output, you'll find options to open the app in a
+- node version 22 or higher
+- yarn
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Setup
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Clone the repository
+- `git clone https://github.com/MohamedHNoor/task-app.git
+cd task-app`
 
-## Get a fresh project
+### Install
 
-When you're ready, run:
+- `yarn install`
 
-```bash
-npm run reset-project
-```
+### Usage
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- `yarn start`
 
-## Learn more
+## Author
 
-To learn more about developing your project with Expo, look at the following resources:
+- GitHub: [@MohamedHNoor](https://github.com/MohamedHNoor)
+  - Twitter: [@MohamedHNoor](https://twitter.com/MohamedHNoor)
+  - LinkedIn: [Mohamed Hassan Noor](https://www.linkedin.com/in/mohamedhnoor/)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🤝 Contributing
 
-## Join the community
+Contributions, issues, and feature requests are welcome!
 
-Join our community of developers creating universal apps.
+Feel free to check the [issues page](https://github.com/MohamedHNoor/task-app/issues).
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
