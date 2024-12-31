@@ -9,6 +9,11 @@
 - NativeWind
 - TypeScript
 
+## Demo Video: 
+https://github.com/user-attachments/assets/8a68072d-df40-4b2d-a169-694a5aa4275c
+
+
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
