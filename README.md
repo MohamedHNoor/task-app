@@ -9,10 +9,9 @@
 - NativeWind
 - TypeScript
 
-## Demo Video: 
+## Demo Video:
+
 https://github.com/user-attachments/assets/8a68072d-df40-4b2d-a169-694a5aa4275c
-
-
 
 ## Getting Started
 
@@ -40,8 +39,8 @@ cd task-app`
 ## Author
 
 - GitHub: [@MohamedHNoor](https://github.com/MohamedHNoor)
-  - Twitter: [@MohamedHNoor](https://twitter.com/MohamedHNoor)
-  - LinkedIn: [Mohamed Hassan Noor](https://www.linkedin.com/in/mohamedhnoor/)
+- Twitter: [@MohamedHNoor](https://twitter.com/MohamedHNoor)
+- LinkedIn: [Mohamed Hassan Noor](https://www.linkedin.com/in/mohamedhnoor/)
 
 ## 🤝 Contributing
 
