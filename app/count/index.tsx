@@ -5,15 +5,18 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  useWindowDimensions,
 } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { intervalToDuration, isBefore } from 'date-fns';
 import TimerSegment from '@/components/TimerSegment';
 import { getFromStorage, saveToStorage } from '@/utils/storage';
+import * as Haptics from 'expo-haptics';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
-const frequency = 10 * 1000;
+const frequency = 14 * 24 * 60 * 60 * 1000;
 
 export const countdownStorageKey = 'countdown';
 
@@ -28,6 +31,8 @@ type CountdownStatus = {
 };
 
 export default function Count() {
+  const confettiRef = useRef<any>();
+  const { width } = useWindowDimensions();
   const [isLoading, setIsLoading] = useState(true);
   const [countdownState, setCountdownState] =
     useState<PersistedCountdownState>();
@@ -68,12 +73,14 @@ export default function Count() {
   }, [lastCompletedAt]);
 
   const scheduleNotification = async () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    confettiRef.current?.start();
     let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
     if (result === 'granted') {
       pushNotificationId = await Notifications.scheduleNotificationAsync({
         content: {
-          title: 'The thing is due!',
+          title: 'The Groceries is due!',
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
@@ -118,10 +125,10 @@ export default function Count() {
       className={`flex-1 items-center justify-center ${status.isOverdue ? 'bg-red-500' : 'undefined'}`}
     >
       {!status.isOverdue ? (
-        <Text className='text-3xl font-bold mb-4'>Things due in...</Text>
+        <Text className='text-3xl font-bold mb-4'>Groceries due in...</Text>
       ) : (
         <Text className='text-3xl font-bold mb-4 text-white'>
-          Things overdue by...
+          Groceries overdue by...
         </Text>
       )}
       <View className='flex flex-row gap-x-4 mb-4'>
@@ -150,8 +157,15 @@ export default function Count() {
         className='bg-sky-500 px-8 py-4 rounded-md'
         onPress={scheduleNotification}
       >
-        <Text className='text-white font-bold'>I've done the thing!</Text>
+        <Text className='text-white font-bold'>I've done the Groceries!</Text>
       </TouchableOpacity>
+      <ConfettiCannon
+        ref={confettiRef}
+        count={50}
+        origin={{ x: width / 2, y: -30 }}
+        autoStart={false}
+        fadeOut={true}
+      />
     </View>
   );
 }

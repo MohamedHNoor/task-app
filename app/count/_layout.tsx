@@ -21,7 +21,10 @@ export default function CountLayout() {
           },
         }}
       />
-      <Stack.Screen name='history' options={{ title: 'History' }} />
+      <Stack.Screen
+        name='history'
+        options={{ title: 'Groceries History', presentation: 'modal' }}
+      />
     </Stack>
   );
 }
